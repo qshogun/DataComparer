@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="DataComparerMVVM.MVVM.View.CompareView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DataComparerMVVM.MVVM.View"
+             xmlns:viewModel="clr-namespace:DataComparerMVVM.MVVM.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.CompareVM}">
+    <d:UserControl.DataContext>
+        <viewModel:CompareViewModel/>
+    </d:UserControl.DataContext>
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10">
+            <TextBlock Text="{Binding Path=MasterFolderPath, Mode=OneWay}"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Margin="10,10,10,10"/>
+            <ComboBox x:Name="comboBox1"
+                      Text="Select segment"
+                      ItemsSource="{Binding Path=Segments}"
+                      SelectedItem="{Binding Path=SelectedSegment}"
+                      DisplayMemberPath="Name"
+                      Margin="20,10,10,10" 
+                      Width="100"
+                      HorizontalAlignment="Left"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
